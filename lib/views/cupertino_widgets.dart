@@ -268,4 +268,34 @@ class _CupertinoWidgetsState extends State<CupertinoWidgets> {
       },
     );
   }
+
+  Widget datePicker() {
+    return CupertinoButton(
+      child: Text(
+        "${initDate.day}/${initDate.month}/${initDate.year}",
+      ),
+      onPressed: () {
+        showCupertinoModalPopup(
+          context: context,
+          builder: (context) => SizedBox(
+            height: 300,
+            child: CupertinoDatePicker(
+              // backgroundColor: CupertinoColors.white,
+              initialDateTime: initDate,
+              maximumYear: 2023,
+              minimumDate: DateTime(1990),
+              mode: CupertinoDatePickerMode.date,
+              use24hFormat: true,
+              onDateTimeChanged: (value) {
+                print(value);
+                setState(() {
+                  initDate = value;
+                });
+              },
+            ),
+          ),
+        );
+      },
+    );
+  }
 }
