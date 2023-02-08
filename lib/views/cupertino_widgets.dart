@@ -149,4 +149,24 @@ class _CupertinoWidgetsState extends State<CupertinoWidgets> {
       ],
     );
   }
+
+  Widget cupertinoSlider() {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Text("$showValue"),
+        CupertinoSlider(
+            value: showValue,
+            max: 100,
+            min: 0,
+            divisions: 20,
+            activeColor: CupertinoColors.activeOrange,
+            onChanged: (changeValue) {
+              setState(() {
+                showValue = changeValue;
+              });
+            }),
+      ],
+    );
+  }
 }
