@@ -359,4 +359,11 @@ class _CupertinoWidgetsState extends State<CupertinoWidgets> {
       },
     );
   }
+
+  Widget activityIndicator() {
+    return const CupertinoActivityIndicator(
+      color: CupertinoColors.activeOrange,
+      radius: 20,
+    );
+  }
 }
