@@ -52,4 +52,44 @@ class _CupertinoWidgetsState extends State<CupertinoWidgets> {
       ],
     );
   }
+
+  Widget cupertinoListSection() {
+    return CupertinoListSection.insetGrouped(
+      footer: Container(
+        height: 200,
+        width: double.maxFinite,
+        color: CupertinoColors.activeGreen,
+      ),
+      header: const Text(
+        "Cupertino List Section",
+      ),
+      children: [
+        const CupertinoListTile(
+          leading: Icon(
+            CupertinoIcons.person,
+          ),
+          title: Text(
+            "title",
+          ),
+        ),
+        CupertinoListTile(
+          onTap: () {},
+          leading: const Icon(
+            CupertinoIcons.person,
+          ),
+          title: const Text(
+            "title",
+          ),
+        ),
+        const CupertinoListTile(
+          leading: Icon(
+            CupertinoIcons.person,
+          ),
+          title: Text(
+            "title",
+          ),
+        ),
+      ],
+    );
+  }
 }
