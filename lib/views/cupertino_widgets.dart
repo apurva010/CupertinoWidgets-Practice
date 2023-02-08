@@ -122,4 +122,31 @@ class _CupertinoWidgetsState extends State<CupertinoWidgets> {
       ),
     );
   }
+
+  Widget cupertinoSearchField() {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Text("Text $searchVal"),
+        const SizedBox(
+          height: 20,
+        ),
+        CupertinoSearchTextField(
+          controller: _searchFieldController,
+          placeholder: "Search",
+          onChanged: (val) {
+            setState(() {
+              searchVal = val;
+            });
+          },
+          onSubmitted: (val) {
+            searchVal = val;
+          },
+          onTap: () {
+            print("tapped");
+          },
+        ),
+      ],
+    );
+  }
 }
