@@ -298,4 +298,26 @@ class _CupertinoWidgetsState extends State<CupertinoWidgets> {
       },
     );
   }
+
+  Widget contextMenu() {
+    return CupertinoContextMenu(
+      actions: [
+        CupertinoContextMenuAction(
+          child: const Text(
+            "Action 1",
+          ),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
+        CupertinoContextMenuAction(
+          child: const Text(
+            "Action 2",
+          ),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
+      ],
+      child: Image.network(
+        "https://thumbs.dreamstime.com/b/ellis-bridge-ahmedabad-century-old-situated-gujarat-india-bridges-western-eastern-parts-city-across-124476810.jpg",
+      ),
+    );
+  }
 }
