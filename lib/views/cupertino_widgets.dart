@@ -366,4 +366,57 @@ class _CupertinoWidgetsState extends State<CupertinoWidgets> {
       radius: 20,
     );
   }
+
+  Widget actionSheet() {
+    return CupertinoButton(
+      onPressed: () {
+        showCupertinoModalPopup(
+          barrierColor: CupertinoColors.inactiveGray,
+          barrierDismissible: false,
+          context: context,
+          builder: (context) {
+            return CupertinoActionSheet(
+              title: const Text(
+                "Delete",
+              ),
+              message: const Text(
+                "want to delete?",
+              ),
+              actions: [
+                CupertinoActionSheetAction(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  isDestructiveAction: true,
+                  child: const Text(
+                    "Yes",
+                  ),
+                ),
+                CupertinoActionSheetAction(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  isDefaultAction: true,
+                  child: const Text(
+                    "NO",
+                  ),
+                ),
+              ],
+              cancelButton: CupertinoActionSheetAction(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: const Text(
+                  "Cancel",
+                ),
+              ),
+            );
+          },
+        );
+      },
+      child: const Text(
+        "Cupertino Action Sheet",
+      ),
+    );
+  }
 }
