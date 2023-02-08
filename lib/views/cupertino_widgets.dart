@@ -23,10 +23,53 @@ class _CupertinoWidgetsState extends State<CupertinoWidgets> {
             "Cupertino Widgets",
           ),
         ),
-        child: Center(
-          child: CupertinoSegmentedControlWidget(),
+        child: const Center(
+          child: CupertinoSlidingSegmentedControlWidget(),
         ),
       ),
+    );
+  }
+}
+
+class CupertinoSlidingSegmentedControlWidget extends StatefulWidget {
+  const CupertinoSlidingSegmentedControlWidget({Key? key}) : super(key: key);
+
+  @override
+  State<CupertinoSlidingSegmentedControlWidget> createState() =>
+      _CupertinoSlidingSegmentedControlWidgetState();
+}
+
+class _CupertinoSlidingSegmentedControlWidgetState
+    extends State<CupertinoSlidingSegmentedControlWidget> {
+  int sliding = 1;
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        const SizedBox(
+          height: 30,
+        ),
+        CupertinoSlidingSegmentedControl(
+          children: const {
+            0: Text(
+              "Text 0",
+            ),
+            1: Text(
+              "Text 1",
+            ),
+            2: Text(
+              "Text 2",
+            ),
+          },
+          groupValue: sliding,
+          onValueChanged: (changeVal) {
+            setState(() {
+              sliding = changeVal!;
+            });
+          },
+        ),
+      ],
     );
   }
 }
@@ -54,13 +97,13 @@ class _CupertinoSegmentedControlWidgetState
               color: CupertinoColors.activeOrange,
               height: 50,
               width: 100,
-              child: Center(child: const Text("Flutter")),
+              child: const Center(child: Text("Flutter")),
             ),
             'React Native': Container(
               color: CupertinoColors.activeGreen,
               height: 50,
               width: 100,
-              child: Center(child: const Text("React native")),
+              child: const Center(child: Text("React native")),
             ),
           },
           onValueChanged: (changeVal) {
