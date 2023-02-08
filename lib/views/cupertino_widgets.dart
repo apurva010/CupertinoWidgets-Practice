@@ -24,9 +24,56 @@ class _CupertinoWidgetsState extends State<CupertinoWidgets> {
           ),
         ),
         child: Center(
-          child: DatePicker(),
+          child: CupertinoSegmentedControlWidget(),
         ),
       ),
+    );
+  }
+}
+
+class CupertinoSegmentedControlWidget extends StatefulWidget {
+  const CupertinoSegmentedControlWidget({Key? key}) : super(key: key);
+
+  @override
+  State<CupertinoSegmentedControlWidget> createState() =>
+      _CupertinoSegmentedControlWidgetState();
+}
+
+class _CupertinoSegmentedControlWidgetState
+    extends State<CupertinoSegmentedControlWidget> {
+  String? _currentText;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        CupertinoSegmentedControl(
+          children: {
+            'Flutter': Container(
+              color: CupertinoColors.activeOrange,
+              height: 50,
+              width: 100,
+              child: Center(child: const Text("Flutter")),
+            ),
+            'React Native': Container(
+              color: CupertinoColors.activeGreen,
+              height: 50,
+              width: 100,
+              child: Center(child: const Text("React native")),
+            ),
+          },
+          onValueChanged: (changeVal) {
+            setState(() {
+              _currentText = changeVal;
+            });
+          },
+        ),
+        const SizedBox(
+          height: 20,
+        ),
+        _currentText != null ? Text("$_currentText") : Container(),
+      ],
     );
   }
 }
