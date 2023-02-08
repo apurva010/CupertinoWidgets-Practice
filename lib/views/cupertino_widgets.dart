@@ -10,13 +10,6 @@ class CupertinoWidgets extends StatefulWidget {
 }
 
 class _CupertinoWidgetsState extends State<CupertinoWidgets> {
-  DateTime initDate = DateTime.now();
-  String? _selectedvalue;
-  double showValue = 10;
-  String? searchVal;
-  TextEditingController _searchFieldController = TextEditingController(
-    text: "Search Field",
-  );
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -31,13 +24,18 @@ class _CupertinoWidgetsState extends State<CupertinoWidgets> {
           ),
         ),
         child: Center(
-          child: cupertinoSliverBar(),
+          child: DatePicker(),
         ),
       ),
     );
   }
+}
 
-  Widget cupertinoSliverBar() {
+class CupertinoSliverBarWidget extends StatelessWidget {
+  const CupertinoSliverBarWidget({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
     return const CustomScrollView(
       slivers: [
         CupertinoSliverNavigationBar(
@@ -54,8 +52,13 @@ class _CupertinoWidgetsState extends State<CupertinoWidgets> {
       ],
     );
   }
+}
 
-  Widget cupertinoListSection() {
+class CupetinoListSectionWidget extends StatelessWidget {
+  const CupetinoListSectionWidget({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
     return CupertinoListSection.insetGrouped(
       footer: Container(
         height: 200,
@@ -94,8 +97,13 @@ class _CupertinoWidgetsState extends State<CupertinoWidgets> {
       ],
     );
   }
+}
 
-  Widget cupertinoTabScaffold() {
+class CupertinoTabScaffoldWidget extends StatelessWidget {
+  const CupertinoTabScaffoldWidget({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
     return CupertinoTabScaffold(
       tabBar: CupertinoTabBar(
         activeColor: CupertinoColors.activeOrange,
@@ -124,8 +132,24 @@ class _CupertinoWidgetsState extends State<CupertinoWidgets> {
       ),
     );
   }
+}
 
-  Widget cupertinoSearchField() {
+class CupertinoSearchField extends StatefulWidget {
+  const CupertinoSearchField({Key? key}) : super(key: key);
+
+  @override
+  State<CupertinoSearchField> createState() => _CupertinoSearchFieldState();
+}
+
+class _CupertinoSearchFieldState extends State<CupertinoSearchField> {
+  String? searchVal;
+
+  TextEditingController _searchFieldController = TextEditingController(
+    text: "Search Field",
+  );
+
+  @override
+  Widget build(BuildContext context) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -151,8 +175,20 @@ class _CupertinoWidgetsState extends State<CupertinoWidgets> {
       ],
     );
   }
+}
 
-  Widget cupertinoSlider() {
+class CupertinoSliderWidget extends StatefulWidget {
+  const CupertinoSliderWidget({Key? key}) : super(key: key);
+
+  @override
+  State<CupertinoSliderWidget> createState() => _CupertinoSliderWidgetState();
+}
+
+class _CupertinoSliderWidgetState extends State<CupertinoSliderWidget> {
+  double showValue = 10;
+
+  @override
+  Widget build(BuildContext context) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -171,8 +207,13 @@ class _CupertinoWidgetsState extends State<CupertinoWidgets> {
       ],
     );
   }
+}
 
-  Widget cupertinoScrollbar() {
+class CupetinoScrollBarWidget extends StatelessWidget {
+  const CupetinoScrollBarWidget({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
     return CupertinoScrollbar(
       // thickness: 20,
       // thicknessWhileDragging: 30,
@@ -189,8 +230,13 @@ class _CupertinoWidgetsState extends State<CupertinoWidgets> {
       ),
     );
   }
+}
 
-  Widget popUpSurface() {
+class PopUpSurface extends StatelessWidget {
+  const PopUpSurface({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
     return CupertinoButton(
       child: const Text(
         "Pop up surface",
@@ -215,8 +261,20 @@ class _CupertinoWidgetsState extends State<CupertinoWidgets> {
       },
     );
   }
+}
 
-  Widget cupertinoPicker() {
+class CupertinoPickerWidget extends StatefulWidget {
+  const CupertinoPickerWidget({Key? key}) : super(key: key);
+
+  @override
+  State<CupertinoPickerWidget> createState() => _CupertinoPickerWidgetState();
+}
+
+class _CupertinoPickerWidgetState extends State<CupertinoPickerWidget> {
+  String? _selectedvalue;
+
+  @override
+  Widget build(BuildContext context) {
     return CupertinoButton(
       child: Text(
         "Cupertino Picker ($_selectedvalue)",
@@ -253,8 +311,13 @@ class _CupertinoWidgetsState extends State<CupertinoWidgets> {
       },
     );
   }
+}
 
-  Widget cupertinoPageRoute() {
+class CupertinoPageRouteWidget extends StatelessWidget {
+  const CupertinoPageRouteWidget({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
     return CupertinoButton.filled(
       child: const Text(
         "Next",
@@ -268,38 +331,57 @@ class _CupertinoWidgetsState extends State<CupertinoWidgets> {
       },
     );
   }
+}
 
-  Widget datePicker() {
-    return CupertinoButton(
-      child: Text(
-        "${initDate.day}/${initDate.month}/${initDate.year}",
-      ),
-      onPressed: () {
-        showCupertinoModalPopup(
-          context: context,
-          builder: (context) => SizedBox(
-            height: 300,
-            child: CupertinoDatePicker(
-              // backgroundColor: CupertinoColors.white,
-              initialDateTime: initDate,
-              maximumYear: 2023,
-              minimumDate: DateTime(1990),
-              mode: CupertinoDatePickerMode.date,
-              use24hFormat: true,
-              onDateTimeChanged: (value) {
-                print(value);
-                setState(() {
-                  initDate = value;
-                });
-              },
+class DatePicker extends StatefulWidget {
+  const DatePicker({Key? key}) : super(key: key);
+
+  @override
+  State<DatePicker> createState() => _DatePickerState();
+}
+
+class _DatePickerState extends State<DatePicker> {
+  DateTime initDate = DateTime.now();
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: CupertinoButton(
+        child: Text(
+          "${initDate.day}/${initDate.month}/${initDate.year}",
+        ),
+        onPressed: () {
+          showCupertinoModalPopup(
+            context: context,
+            builder: (context) => SizedBox(
+              height: 300,
+              child: CupertinoDatePicker(
+                // backgroundColor: CupertinoColors.white,
+                initialDateTime: initDate,
+                maximumYear: 2023,
+                minimumDate: DateTime(1990),
+                mode: CupertinoDatePickerMode.date,
+                use24hFormat: true,
+                onDateTimeChanged: (value) {
+                  print(value);
+                  setState(() {
+                    initDate = value;
+                  });
+                },
+              ),
             ),
-          ),
-        );
-      },
+          );
+        },
+      ),
     );
   }
+}
 
-  Widget contextMenu() {
+class ContextMenu extends StatelessWidget {
+  const ContextMenu({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
     return CupertinoContextMenu(
       actions: [
         CupertinoContextMenuAction(
@@ -320,8 +402,13 @@ class _CupertinoWidgetsState extends State<CupertinoWidgets> {
       ),
     );
   }
+}
 
-  Widget alertDialog() {
+class AlertDialog extends StatelessWidget {
+  const AlertDialog({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
     return CupertinoButton(
       child: const Text(
         "Alert Dialog",
@@ -359,15 +446,25 @@ class _CupertinoWidgetsState extends State<CupertinoWidgets> {
       },
     );
   }
+}
 
-  Widget activityIndicator() {
+class ActivityIndicator extends StatelessWidget {
+  const ActivityIndicator({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
     return const CupertinoActivityIndicator(
       color: CupertinoColors.activeOrange,
       radius: 20,
     );
   }
+}
 
-  Widget actionSheet() {
+class ActionSheet extends StatelessWidget {
+  const ActionSheet({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
     return CupertinoButton(
       onPressed: () {
         showCupertinoModalPopup(

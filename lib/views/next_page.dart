@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class NextPage extends StatelessWidget {
@@ -5,9 +6,14 @@ class NextPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return CupertinoPageScaffold(
+      navigationBar: CupertinoNavigationBar(
+        middle: Text(
+          "Page 2",
+        ),
+      ),
       backgroundColor: Colors.blueGrey,
-      body: Center(
+      child: Center(
         child: Text(
           "Page 2",
         ),
