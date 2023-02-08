@@ -92,4 +92,34 @@ class _CupertinoWidgetsState extends State<CupertinoWidgets> {
       ],
     );
   }
+
+  Widget cupertinoTabScaffold() {
+    return CupertinoTabScaffold(
+      tabBar: CupertinoTabBar(
+        activeColor: CupertinoColors.activeOrange,
+        inactiveColor: CupertinoColors.inactiveGray,
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(
+              CupertinoIcons.chat_bubble,
+            ),
+            label: "Chat",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              CupertinoIcons.mail,
+            ),
+            label: "Mail",
+          ),
+        ],
+      ),
+      tabBuilder: (context, index) => CupertinoTabView(
+        builder: (context) {
+          return Center(
+            child: Text("$index"),
+          );
+        },
+      ),
+    );
+  }
 }
