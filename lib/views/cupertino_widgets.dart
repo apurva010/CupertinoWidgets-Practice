@@ -213,4 +213,42 @@ class _CupertinoWidgetsState extends State<CupertinoWidgets> {
       },
     );
   }
+
+  Widget cupertinoPicker() {
+    return CupertinoButton(
+      child: Text(
+        "Cupertino Picker ($_selectedvalue)",
+      ),
+      onPressed: () {
+        showCupertinoModalPopup(
+          context: context,
+          builder: (_) => SizedBox(
+            height: 250,
+            child: CupertinoPicker(
+              itemExtent: 30,
+              onSelectedItemChanged: (newValue) {
+                setState(() {
+                  _selectedvalue = newValue.toString();
+                });
+              },
+              scrollController: FixedExtentScrollController(
+                initialItem: 1,
+              ),
+              children: const [
+                Text(
+                  "0",
+                ),
+                Text(
+                  "1",
+                ),
+                Text(
+                  "2",
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
 }
