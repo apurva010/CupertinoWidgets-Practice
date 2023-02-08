@@ -46,7 +46,7 @@ class _CupertinoWidgetsState extends State<CupertinoWidgets> {
             CupertinoIcons.back,
           ),
           trailing: Icon(
-            CupertinoIcons.right_chevron,
+            CupertinoIcons.arrow_right,
           ),
         ),
       ],
