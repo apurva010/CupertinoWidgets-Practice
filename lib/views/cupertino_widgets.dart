@@ -320,4 +320,43 @@ class _CupertinoWidgetsState extends State<CupertinoWidgets> {
       ),
     );
   }
+
+  Widget alertDialog() {
+    return CupertinoButton(
+      child: const Text(
+        "Alert Dialog",
+      ),
+      onPressed: () {
+        showCupertinoDialog(
+          context: context,
+          builder: (context) => CupertinoAlertDialog(
+            insetAnimationDuration: const Duration(
+              seconds: 5,
+            ),
+            title: const Text(
+              "Alert Dialog",
+            ),
+            content: const Text(
+              "Content",
+            ),
+            actions: [
+              CupertinoDialogAction(
+                child: const Text(
+                  "No",
+                ),
+                onPressed: () => Navigator.of(context).pop(),
+                isDestructiveAction: true,
+                isDefaultAction: true,
+              ),
+              const CupertinoDialogAction(
+                child: Text(
+                  "Yes",
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
 }
