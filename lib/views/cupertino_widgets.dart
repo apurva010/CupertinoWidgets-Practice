@@ -169,4 +169,22 @@ class _CupertinoWidgetsState extends State<CupertinoWidgets> {
       ],
     );
   }
+
+  Widget cupertinoScrollbar() {
+    return CupertinoScrollbar(
+      // thickness: 20,
+      // thicknessWhileDragging: 30,
+      // thumbVisibility: true,
+      child: ListView.builder(
+        itemCount: 100,
+        itemBuilder: (context, index) {
+          return Center(
+            child: Text(
+              "$index",
+            ),
+          );
+        },
+      ),
+    );
+  }
 }
