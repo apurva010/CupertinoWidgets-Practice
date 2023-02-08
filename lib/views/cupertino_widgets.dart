@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
+import 'next_page.dart';
+
 class CupertinoWidgets extends StatefulWidget {
   const CupertinoWidgets({Key? key}) : super(key: key);
 
@@ -246,6 +248,21 @@ class _CupertinoWidgetsState extends State<CupertinoWidgets> {
                 ),
               ],
             ),
+          ),
+        );
+      },
+    );
+  }
+
+  Widget cupertinoPageRoute() {
+    return CupertinoButton.filled(
+      child: const Text(
+        "Next",
+      ),
+      onPressed: () {
+        Navigator.of(context).push(
+          CupertinoPageRoute(
+            builder: (context) => const NextPage(),
           ),
         );
       },
