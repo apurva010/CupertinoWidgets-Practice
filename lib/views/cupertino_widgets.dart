@@ -187,4 +187,30 @@ class _CupertinoWidgetsState extends State<CupertinoWidgets> {
       ),
     );
   }
+
+  Widget popUpSurface() {
+    return CupertinoButton(
+      child: const Text(
+        "Pop up surface",
+      ),
+      onPressed: () {
+        showCupertinoModalPopup(
+          context: context,
+          builder: (context) => CupertinoPopupSurface(
+            isSurfacePainted: true,
+            child: Container(
+              width: double.infinity,
+              height: 200,
+              child: const Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Text(
+                  "Pop up Surface",
+                ),
+              ),
+            ),
+          ),
+        );
+      },
+    );
+  }
 }
